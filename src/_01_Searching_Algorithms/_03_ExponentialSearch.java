@@ -1,7 +1,36 @@
 package _01_Searching_Algorithms;
 
 public class _03_ExponentialSearch {
-	
+	public static int binarySearch(int[] array, int start, int end, int value) {
+		//2. if start is greater than end, then
+		//   do steps 3 - 6.
+			if(start > end) {
+				int mid = start + (end - start)/2;
+				if(array[mid] == value) {
+					return mid;
+				}
+			if(array[mid] > value) {
+				return binarySearch(array, start, mid-1, value);
+				}
+			return binarySearch(array, mid+1, end, value);
+			}
+			//3. create an integer called mid and set it equal
+			//   to the half way point between start and end
+
+            //4. if the array element at mid is equal to value
+            //   then return mid
+ 
+            //5. if the array element at mid is greater than value
+            //   then return the value returned from a call to the 
+            //   binarySearch method. Pass in start and mid - 1
+            //   for the end variable.
+            
+            //6. return the value returned from a call to the binarySearch
+            //   method. Use mid + 1 as the start, and pass in end.
+ 
+        //7. return -1 because the value was not found
+        return -1;
+	} 
 	// Exponential search is super efficient for large data sets by
 	// optimizing the binary search. It, like the binary search, only
 	// works with sorted data.
@@ -10,15 +39,27 @@ public class _03_ExponentialSearch {
 	//   We can assume that array is sorted.
 	public static int exponentialSearch(int array[], int value)
 	{
+		int minemum;
 		// 2. Check if the array element at 0 is the value.
 		//    If it is, then return 0.
-
+			if(array[0] == value) {
+				return 0 ;
+			}
 		// 3. create an integer called counter and initialize it to 1;
-		
+		int counter = 1;
 		//4. make while loop that checks for two conditions:
 		//    	counter is less than the length of the array,
 		//		and the array element at counter is less than or equal to value
-		
+		minemum = 0;	
+		while(counter < array.length && array[counter] <= value) {
+				counter = counter*2;
+				
+				if(counter < array.length) {
+					minemum = counter;
+				} else {
+					 minemum = array.length-1;
+				}
+			}
 			//5. inside the while loop, double the value of counter.
 
 		//6. create an integer called minimum
@@ -35,6 +76,6 @@ public class _03_ExponentialSearch {
 		//		the value to be found
 		
 		//10. return the result
-		return 0;
+		return binarySearch(array,counter/2,minemum,value);
 	}
 }

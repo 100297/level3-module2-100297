@@ -12,7 +12,20 @@ public class _02_InterpolationSearch {
 	//   We can assume array is already sorted and uniformly distributed
 	public static int interpolationSearch(int[] array, int value)
     {
-        //2. create two integers called start and end.
+		int start = 0;
+		int end = array.length-1;
+		while(start <= end && value >= array[start] && value <= array[end]) {
+			int position = start + (((end - start) / (array[end] - array[start])) * (value - array[start]));
+			if(array[position] == value) {
+				return position;
+			}
+			if(array[position] < value) {
+				start = position + 1;
+			} else {
+				end = position - 1;
+			}
+		}
+		//2. create two integers called start and end.
 		//   initialize them to 0 and the length of the array minus one
 		//   respectively
       

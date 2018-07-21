@@ -1,6 +1,13 @@
 package _00_Sorting_Algorithms;
 
+import java.util.function.BooleanSupplier;
+
 public class _00_SortedArrayChecker {
+
+	public static BooleanSupplier doubleArraySorted(double[] unsorted) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	//1. Write a static method called intArraySorted. 
 	//   This method takes in an array of integers
 	//   and it returns a boolean.
